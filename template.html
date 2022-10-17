@@ -20,18 +20,29 @@
 </head>
 <body>
   <!-- Her (i body-elementet) skrives alt innhold, som påvirker tegning på skjermen. -->
-  <form action="">
-    <label for="name">Navn til idiot</label>
-    <input type="text" name="name" required/>
-    <label for="epost">ligma sin epost</label>
-    <input type="email" name="epost" required/>
-  </form>
   <form>
-    
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" />
+  
+    <button type="submit">Submit</button>
   </form>
+  
+
   <script>
    // Se https://html.spec.whatwg.org/multipage/scripting.html#restrictions-for-contents-of-script-elements
    // Her skrives kode i JavaScript som "gir liv" til bilde på skjermen.
+   function handleSubmit(event) {
+    event.preventDefault();
+
+    const data = new FormData(event.target);
+
+    const value = data.get('email');
+
+    console.log({value});
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', handleSubmit);
   </script>
 
 </body>
